@@ -22,14 +22,11 @@ A full-stack web application for managing contacts and their phone numbers. This
 
 *  Open `Phonebook.Backend.sln` in Microsoft Visual Studio
    
-*  Configuration:
-   
-    - Copy `appsettingsexample.json` and rename the copy to `appsettings.json`
-    - Open `appsettings.json` and enter your local SQL Server connection string
-      
-*  Database Migration:
+*   Copy `appsettingsexample.json` and rename the copy to `appsettings.json`
   
-    - Open Package Manager Console in Tools/NuGet Package Manager and run the command:
+*   Open `appsettings.json` and enter your local SQL Server connection string
+
+*   Open Package Manager Console in Tools/NuGet Package Manager and run the command:
     
     ```bash
     Update-Database
