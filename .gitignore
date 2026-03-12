@@ -1,6 +1,6 @@
-# ==========================================
+# =============================================
 # IDE & Editors (VSC, Visual Studio, JetBrains)
-# ==========================================
+# =============================================
 .vscode/
 .vs/
 .idea/
@@ -9,18 +9,18 @@
 *.sln.docuser
 .history/
 
-# ==========================================
+# =============================================
 # .NET / Backend (Phonebook.Backend)
-# ==========================================
+# =============================================
 Phonebook.Backend/[Bb]in/
 Phonebook.Backend/[Oo]bj/
 
 Phonebook.Backend/appsettings.json
 Phonebook.Backend/appsettings.Development.json
 
-# ==========================================
+# =============================================
 # Angular / Frontend (Phonebook.Frontend)
-# ==========================================
+# =============================================
 Phonebook.Frontend/node_modules/
 Phonebook.Frontend/.angular/
 Phonebook.Frontend/dist/
@@ -28,12 +28,14 @@ Phonebook.Frontend/tmp/
 Phonebook.Frontend/out-tsc/
 Phonebook.Frontend/bazel-out/
 
-# Log datoteke
+#==============================================
+# Log files
+#==============================================
 npm-debug.log
 yarn-error.log
 
-# ==========================================
+# =============================================
 # System files
-# ==========================================
+# =============================================
 .DS_Store
 Thumbs.db
