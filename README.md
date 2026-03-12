@@ -29,7 +29,7 @@ A full-stack web application for managing contacts and their phone numbers. This
       
 *  Database Migration:
   
-    Open Package Manager Console in Tools/NuGet Package Manager and run the command:
+    - Open Package Manager Console in Tools/NuGet Package Manager and run the command:
     
     ```bash
     Update-Database
