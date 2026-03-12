@@ -20,30 +20,22 @@ A full-stack web application for managing contacts and their phone numbers. This
 
 ### 2. Backend Setup
 
-*  Navigate to the backend folder:
+*  Open `Phonebook.Backend.sln` in Microsoft Visual Studio
    
-    ```bash
-    cd Phonebook.Backend
-    ```
-    
-*  **Configuration:**
-  
-    - Copy `appsettingsexample.json` and rename the copy to `appsettings.json`.
-    - Open `appsettings.json` and enter your local SQL Server connection string.
+*  Configuration:
+   
+    - Copy `appsettingsexample.json` and rename the copy to `appsettings.json`
+    - Open `appsettings.json` and enter your local SQL Server connection string
       
-*  **Database Migration:**
+*  Database Migration:
   
-    Run this in your terminal to create the database:
+    Open Package Manager Console in Tools/NuGet Package Manager and run the command:
     
     ```bash
-    dotnet ef database update
+    Update-Database
     ```
     
-*  **Run the API:**
-   
-    ```bash
-    dotnet run
-    ```
+*  Run the API with F5
 
 ### 3. Frontend Setup
 
@@ -53,7 +45,7 @@ A full-stack web application for managing contacts and their phone numbers. This
     cd ../Phonebook.Frontend
     ```
     
-*  **Install & Run:**
+*  Install & Run:
    
     ```bash
     npm install
