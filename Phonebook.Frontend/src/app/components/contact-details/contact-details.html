@@ -1,0 +1,123 @@
+<div class="container mt-5 mb-5" *ngIf="contact">
+  <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+    <h2 class="text-primary"><i class="bi bi-person-lines-fill"></i> Contact Details</h2>
+    <div>
+      <a routerLink="/contacts" class="btn btn-sm btn-outline-secondary shadow-sm me-2">
+        <i class="bi bi-arrow-left"></i> Back to Phonebook
+      </a>
+      <button *ngIf="!isEditMode" class="btn btn-sm btn-outline-warning shadow-sm" (click)="loadNumbersForEdit()">
+        <i class="bi bi-pencil"></i> Edit Numbers
+      </button>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-5">
+      <div class="card border-0 shadow-sm rounded-3 bg-light h-100">
+        <div class="card-body p-4">
+          <h5 class="card-title mb-4 text-secondary border-bottom pb-2">General Information</h5>
+          
+          <div class="mb-3">
+            <label class="form-label small fw-bold text-uppercase text-muted">First Name</label>
+            <p class="fs-5 fw-normal text-dark">{{ contact.firstName }}</p>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label small fw-bold text-uppercase text-muted">Last Name</label>
+            <p class="fs-5 fw-normal text-dark">{{ contact.lastName }}</p>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label small fw-bold text-uppercase text-muted">Email</label>
+            <p class="fs-6 fw-normal text-dark">{{ contact.email || 'N/A' }}</p>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label small fw-bold text-uppercase text-muted">Address</label>
+            <p class="fs-6 fw-normal text-dark">{{ contact.address || 'N/A' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-7 ">
+      <form class="card border-0 shadow-sm rounded-3 overflow-hidden h-100" #numbersForm="ngForm">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="bg-primary text-white">
+              <tr>
+                <th class="ps-3 py-3 fs-6 fw-bold text-center bg-primary text-white border-0" style="width: 80px;">Primary</th>
+                <th class="py-3 fs-6 fw-bold text-center bg-primary text-white border-0">Phone Number</th>
+                <th class="py-3 fs-6 fw-bold text-center bg-primary text-white border-0">Type</th>
+                <th *ngIf="isEditMode" class="py-3 fs-6 fw-bold text-center bg-primary text-white border-0">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngIf="!isEditMode">
+                <tr *ngFor="let pn of contact.phoneNumbers">
+                  <td class="text-center">
+                    <input type="radio" class="form-check-input shadow-sm" [checked]="pn.isDefault" disabled>
+                  </td>
+                  <td class="ps-3 align-middle text-center fw-bold">{{ pn.number }}</td>
+                  <td class="align-middle text-center">
+                    <span class="badge bg-primary px-3">{{ getTypeName(pn.phoneTypeId) }}</span>
+                  </td>
+                </tr>
+              </ng-container>
+
+              <ng-container *ngIf="isEditMode">
+                <tr *ngFor="let pn of contact.phoneNumbers; let i = index">
+                  <td class="text-center">
+                    <input type="radio" 
+                          class="form-check-input shadow-sm" 
+                          name="defaultGroup" 
+                          [checked]="pn.isDefault" 
+                          (change)="setDefaultNumber(i)">
+                  </td>
+                  <td class="ps-3 position-relative">
+                    <input [(ngModel)]="pn.number" 
+                          name="num{{i}}"
+                          class="form-control form-control-sm shadow-sm"
+                          placeholder="Phone number (e.g. 091 234 5678)"
+                          required
+                          pattern="^(\+[0-9 \-]{8,19}|[0-9][0-9 \-]{2,19})$"
+                          #phone="ngModel"
+                          [ngClass]="{'is-invalid': phone.invalid && (phone.dirty || phone.touched)}">
+                  </td>
+                  <td>
+                    <select [(ngModel)]="pn.phoneTypeId" name="type{{i}}" class="form-select form-select-sm shadow-sm" required>
+                      <option *ngFor="let type of phoneTypes" [value]="type.id">{{ type.name }}</option>
+                    </select>
+                  </td>
+                  <td class="text-center">
+                    <button class="btn btn-sm btn-outline-danger shadow-sm" (click)="removePhoneNumber(i)">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </ng-container>
+              
+              <tr *ngIf="contact.phoneNumbers.length === 0 && !isEditMode">
+                <td colspan="3" class="text-center py-4 text-muted">No numbers saved.</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="text-center py-2 mt-2" *ngIf="isEditMode">
+              <button class="btn btn-sm btn-success shadow-sm" (click)="addPhoneNumber()">
+                  <i class="bi bi-plus-lg"></i> Add New Number
+              </button>
+          </div>
+        </div>
+      </form>
+
+      <div class="mt-4 text-end" *ngIf="isEditMode">
+        <button type="button" class="btn btn-warning px-4 shadow-sm fw-bold me-2" (click)="saveChanges()" [disabled]="numbersForm.invalid|| !contact.phoneNumbers || contact.phoneNumbers.length === 0">
+          Update Changes
+        </button>
+        <button type="button" class="btn btn-link btn-sm text-secondary" (click)="cancelChanges()">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
