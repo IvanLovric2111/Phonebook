@@ -16,6 +16,7 @@ Phonebook.Backend/[Bb]in/
 Phonebook.Backend/[Oo]bj/
 
 Phonebook.Backend/appsettings.json
+Phonebook.Backend/appsettings.Development.json
 
 # ==========================================
 # Angular / Frontend (Phonebook.Frontend)
