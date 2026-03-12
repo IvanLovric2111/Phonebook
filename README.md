@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a full-stack contact management application built with a decoupled architecture. It uses an **Angular** frontend to interact with a **.NET Core Web API**. The system manages contacts and their phone numbers with specialized logic for handling primary (default) numbers and data validation.
+A full-stack web application for managing contacts and their phone numbers. This project features a robust **Angular** frontend and a **.NET Core Web API** backend, utilizing Entity Framework Core for database management.
 
 ## Tech Stack
 
@@ -20,34 +20,40 @@ This is a full-stack contact management application built with a decoupled archi
 
 ### 2. Backend Setup
 
-1.  Navigate to the backend folder:
+*  Navigate to the backend folder:
    
     ```bash
     cd Phonebook.Backend
     ```
-2.  **Configuration:**
+    
+*  **Configuration:**
+  
     - Copy `appsettingsexample.json` and rename the copy to `appsettings.json`.
     - Open `appsettings.json` and enter your local SQL Server connection string.
-3.  **Database Migration:**
+      
+*  **Database Migration:**
+  
     Run this in your terminal to create the database:
     
     ```bash
     dotnet ef database update
     ```
     
-4.  **Run the API:**
+*  **Run the API:**
    
     ```bash
     dotnet run
     ```
 
 ### 3. Frontend Setup
-1.  Navigate to the frontend folder:
+
+*  Navigate to the frontend folder:
    
     ```bash
     cd ../Phonebook.Frontend
     ```
-2.  **Install & Run:**
+    
+*  **Install & Run:**
    
     ```bash
     npm install
